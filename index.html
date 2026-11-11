@@ -22,6 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>
+  document.documentElement.classList.add('js');
   // At launch, paste the App Store link here. Every download button uses it.
   window.APP_STORE_URL = "";
 </script>
@@ -38,8 +39,10 @@
   </nav>
 </div></header>
 
+<div class="liftbar" aria-hidden="true"><b class="lf">G</b><div class="shaft"><i class="car"></i></div></div>
+
 <main>
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" data-floor="G" aria-labelledby="hero-title">
   <div class="cloud a"></div><div class="cloud b"></div><div class="cloud c"></div>
   <div class="wrap">
     <div class="hero-top">
@@ -60,10 +63,10 @@
       <p class="note">Free · No energy meter · Nothing behind a paywall</p>
     </div>
   </div>
-  <div class="street" aria-hidden="true"></div>
+  <div class="street" aria-hidden="true"><div class="car"></div><div class="car b"></div><div class="car c"></div></div>
 </section>
 
-<section class="tour" aria-labelledby="tour-title">
+<section class="tour" data-floor="G" aria-labelledby="tour-title">
   <div class="wrap head">
     <h2 id="tour-title">Have a look around</h2>
     <div class="arrows"><button type="button" data-dir="-1" aria-label="Previous screenshots">‹</button><button type="button" data-dir="1" aria-label="Next screenshots">›</button></div>
@@ -79,7 +82,7 @@
   </div>
 </section>
 
-<section class="floor" id="loop" aria-labelledby="loop-title">
+<section class="floor" id="loop" data-floor="1" aria-labelledby="loop-title">
   <div class="wrap">
     <div class="plate"><span class="n">1F</span><span class="t">The game</span></div>
     <h2 id="loop-title">How an agency gets tall</h2>
@@ -99,7 +102,7 @@
   </div>
 </section>
 
-<section class="floor alt" id="staff" aria-labelledby="staff-title">
+<section class="floor alt" id="staff" data-floor="2" aria-labelledby="staff-title">
   <div class="wrap">
     <div class="plate"><span class="n">2F</span><span class="t">The staff</span></div>
     <h2 id="staff-title">Meet the creatives</h2>
@@ -113,7 +116,7 @@
   </div>
 </section>
 
-<section class="floor" id="clients" aria-labelledby="clients-title">
+<section class="floor" id="clients" data-floor="3" aria-labelledby="clients-title">
   <div class="wrap">
     <div class="plate"><span class="n">3F</span><span class="t">The clients</span></div>
     <h2 id="clients-title">Clients with big opinions of themselves</h2>
@@ -133,7 +136,7 @@
   </div>
 </section>
 
-<section class="floor alt" id="league" aria-labelledby="league-title">
+<section class="floor alt" id="league" data-floor="4" aria-labelledby="league-title">
   <div class="wrap">
     <div class="plate"><span class="n">4F</span><span class="t">Between floors</span></div>
     <h2 id="league-title">Things to do while the tower builds</h2>
@@ -157,7 +160,7 @@
   </div>
 </section>
 
-<section class="floor" id="music" aria-labelledby="music-title">
+<section class="floor" id="music" data-floor="5" aria-labelledby="music-title">
   <div class="wrap sound">
     <div>
       <div class="plate"><span class="n">5F</span><span class="t">The soundtrack</span></div>
@@ -176,7 +179,7 @@
   </div>
 </section>
 
-<section class="floor alt" aria-labelledby="fair-title">
+<section class="floor alt" data-floor="6" aria-labelledby="fair-title">
   <div class="wrap">
     <div class="plate"><span class="n">6F</span><span class="t">House rules</span></div>
     <h2 id="fair-title">The fine print (it's short)</h2>
@@ -229,6 +232,63 @@ audio.addEventListener('play', () => { player.classList.add('playing'); btn.text
 audio.addEventListener('pause', () => { player.classList.remove('playing'); btn.textContent = '▶'; btn.setAttribute('aria-label', 'Play Lobby Hours'); });
 audio.addEventListener('ended', () => { bar.style.width = '0'; });
 audio.addEventListener('timeupdate', () => { bar.style.width = (audio.currentTime / (audio.duration || 24) * 100) + '%'; });
+
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Reveal things as they scroll in, staggered within each group
+const revealEls = [...document.querySelectorAll('.plate,.floor h2,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.sound>*,.promises .panel,.tour .card,#get .wrap>*')];
+const counts = new Map();
+revealEls.forEach(el => {
+  const i = counts.get(el.parentElement) || 0;
+  counts.set(el.parentElement, i + 1);
+  el.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
+});
+const countUp = box => box.querySelectorAll('b').forEach(b => {
+  const n = Number(b.textContent);
+  if (!n || calm) return;
+  const t0 = performance.now();
+  const tick = t => {
+    const k = Math.min(1, (t - t0) / 1200);
+    b.textContent = Math.round(n * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(tick);
+  };
+  b.textContent = '0';
+  requestAnimationFrame(tick);
+});
+if ('IntersectionObserver' in window && !calm) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    if (e.target.classList.contains('facts')) countUp(e.target);
+    io.unobserve(e.target);
+  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+// The lift at the side climbs as you scroll, and shows which floor you're on
+const liftbar = document.querySelector('.liftbar');
+const floorLabel = liftbar.querySelector('.lf');
+const floors = [...document.querySelectorAll('[data-floor]')];
+let shownFloor = 'G', ticking = false;
+const updateLift = () => {
+  ticking = false;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  liftbar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
+  liftbar.classList.toggle('show', scrollY > innerHeight * 0.6);
+  let f = 'G';
+  for (const s of floors) if (s.getBoundingClientRect().top < innerHeight * 0.5) f = s.dataset.floor;
+  if (f !== shownFloor) {
+    shownFloor = f;
+    floorLabel.textContent = f;
+    floorLabel.classList.remove('ding');
+    void floorLabel.offsetWidth;
+    floorLabel.classList.add('ding');
+  }
+};
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateLift); } }, { passive: true });
+updateLift();
 </script>
 </body>
 </html>

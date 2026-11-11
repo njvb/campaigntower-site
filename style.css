@@ -103,7 +103,9 @@ h3{font-family:var(--pixel);font-size:16px;font-weight:700;letter-spacing:.3px;m
 .badge{position:relative;background:var(--paper);color:var(--ink);border:3px solid var(--ink2);box-shadow:5px 5px 0 #000;padding:30px 16px 18px;text-align:center}
 .badge::before{content:"";position:absolute;left:50%;top:-34px;width:14px;height:40px;transform:translateX(-50%);background:var(--c,var(--red));border:3px solid var(--ink2)}
 .badge::after{content:"";position:absolute;left:50%;top:10px;width:30px;height:8px;transform:translateX(-50%);background:var(--plate2);border-radius:4px}
-.badge:nth-child(even){transform:rotate(1.5deg)}.badge:nth-child(odd){transform:rotate(-1.2deg)}
+.badge{--r:-1.4deg;transform-origin:50% -34px;animation:swing 4.5s ease-in-out infinite alternate}
+.badge:nth-child(even){--r:1.6deg;animation-delay:-1.8s;animation-duration:5.2s}
+.badge:hover{animation-duration:.7s}
 .face{width:64px;height:64px;margin:6px auto 12px;background:var(--c,var(--red));border:3px solid var(--ink2);display:grid;place-items:center;font-family:var(--pixel);font-size:24px;color:var(--ink)}
 .badge h3{font-size:15px;margin-bottom:2px}
 .badge .role{font-size:12px;color:#5a5866;margin-bottom:12px}
@@ -198,7 +200,85 @@ footer nav{margin-left:auto;display:flex;gap:16px}
   .bar nav a:not(.btn){display:none}
   .player{flex-direction:row;padding:16px}.play{width:60px;height:60px}
 }
+/* ---------- Motion ---------- */
+@keyframes swing{from{transform:rotate(var(--r))}to{transform:rotate(calc(var(--r) * -1))}}
+@keyframes drop{from{opacity:0;transform:translateY(-46px) scale(.96)}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes rise-big{from{opacity:0;transform:translateY(160px)}}
+@keyframes wipe{to{background-size:100% 100%;color:var(--gold)}}
+@keyframes pop{from{transform:rotate(-4deg) scale(0)}to{transform:rotate(-4deg) scale(1)}}
+@keyframes nudge{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-1deg) translateY(-4px)}}
+@keyframes drive{to{translate:calc(100vw + 200px) 0}}
+@keyframes drive-back{to{translate:calc(-100vw - 200px) 0}}
+@keyframes ding{0%,100%{background:var(--gold)}50%{background:#fff}}
+@keyframes shine{0%{left:-60%}22%,100%{left:140%}}
+@keyframes twinkle{from{opacity:.35}to{opacity:1}}
+
+/* Hero entrance */
+html.js .wordmark{animation:drop .9s cubic-bezier(.34,1.56,.64,1) both}
+html.js .hero h1{animation:rise .8s .15s cubic-bezier(.2,.7,.2,1) both}
+html.js .hero h1 em{background:linear-gradient(var(--ink),var(--ink)) no-repeat 0 0/0% 100%;color:var(--ink);animation:wipe .7s 1s cubic-bezier(.7,0,.2,1) forwards}
+html.js .hero-cta{animation:rise .8s .35s cubic-bezier(.2,.7,.2,1) both}
+html.js .phone-wrap{animation:rise-big 1.1s .2s cubic-bezier(.2,.8,.2,1) both}
+html.js .phone-wrap .tag{animation:pop .5s 1.4s cubic-bezier(.34,1.56,.64,1) both,nudge 3.2s 2s ease-in-out infinite}
+
+/* Traffic on the high street (drawn here, not cut from the game) */
+.street .car{position:absolute;top:63px;left:-90px;width:46px;height:13px;background:var(--red);border:3px solid var(--ink2);animation:drive 11s linear infinite}
+.street .car::before{content:"";position:absolute;left:8px;top:-12px;width:22px;height:12px;background:var(--red);border:3px solid var(--ink2);border-bottom:0;box-shadow:inset 0 0 0 3px #9fd8f5;box-sizing:border-box}
+.street .car::after{content:"";position:absolute;bottom:-8px;left:4px;width:9px;height:9px;background:#111;box-shadow:24px 0 #111}
+.street .car.b{top:101px;left:auto;right:-90px;background:var(--blue);animation:drive-back 14s 3s linear infinite}
+.street .car.b::before{background:var(--blue);left:14px}
+.street .car.c{background:var(--gold);animation-duration:17s;animation-delay:-8s}
+.street .car.c::before{background:var(--gold)}
+
+/* Scroll reveals */
+html.js :is(.plate,.floor h2,.floor .intro,.beat,.facts,.roster .panel,.split>*,.stack>.panel,.dash>*,.sound>*,.promises .panel,.tour .card,#get .wrap>*){opacity:0;translate:0 34px;transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),translate .8s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+html.js .badge{opacity:0;translate:0 -60px;transition:opacity .5s var(--d,0s),translate .9s cubic-bezier(.34,1.56,.64,1) var(--d,0s)}
+html.js .in{opacity:1!important;translate:0 0!important}
+.plate.in .n{animation:ding .3s .5s steps(1) 3}
+
+/* Lift progress indicator */
+.liftbar{position:fixed;right:18px;top:50%;z-index:15;display:flex;flex-direction:column;align-items:center;gap:8px;translate:0 -50%;opacity:0;pointer-events:none;transition:opacity .4s}
+.liftbar.show{opacity:1}
+.liftbar .lf{font-family:var(--pixel);font-size:14px;background:var(--gold);color:var(--ink);border:3px solid #000;min-width:42px;text-align:center;padding:4px 6px;box-shadow:3px 3px 0 #000}
+.liftbar .lf.ding{animation:ding .25s steps(1) 3}
+.liftbar .shaft{position:relative;width:28px;height:200px;background:var(--plate) repeating-linear-gradient(0deg,transparent 0 30px,rgba(0,0,0,.45) 30px 33px);border:3px solid #000;box-shadow:3px 3px 0 #000}
+.liftbar .car{position:absolute;left:2px;right:2px;bottom:2px;height:26px;background:var(--gold);border:2px solid #000;box-shadow:inset 0 -8px 0 #c79a2a;translate:0 calc(var(--p,0) * -164px);transition:translate .15s linear}
+.liftbar .car::before{content:"";position:absolute;left:4px;right:4px;top:3px;height:7px;background:#2a2733}
+@media (max-width:1100px){.liftbar{display:none}}
+
+/* Hover and ambient touches */
+.btn.store{position:relative;overflow:hidden}
+.btn.store::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 5s 2.5s infinite}
+.card{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:9px 14px 0 #000}
+.beat{overflow:hidden;transition:transform .25s,box-shadow .25s}
+.beat img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.beat:hover{transform:translateY(-6px);box-shadow:8px 11px 0 var(--ink2)}
+.beat:hover img{transform:scale(1.06)}
+.panel{transition:transform .2s,box-shadow .2s}
+.panel:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--ink2)}
+.marquee:hover .row{animation-play-state:paused}
+.marquee span{transition:transform .2s}
+.marquee span:hover{transform:translateY(-4px) rotate(-2deg)}
+.shot{transition:transform .3s}
+.split .shot:hover{transform:rotate(-1.2deg) scale(1.02)}
+.rooftop{position:relative;overflow:hidden}
+.rooftop::before{content:"";position:absolute;inset:0 0 45% 0;pointer-events:none;animation:twinkle 1.6s steps(2) infinite alternate;background:
+ linear-gradient(#fff,#fff) 8% 22%/3px 3px no-repeat,linear-gradient(#fff,#fff) 17% 60%/3px 3px no-repeat,
+ linear-gradient(#fff,#fff) 26% 15%/4px 4px no-repeat,linear-gradient(#fff,#fff) 39% 42%/3px 3px no-repeat,
+ linear-gradient(#fff,#fff) 61% 18%/3px 3px no-repeat,linear-gradient(#fff,#fff) 72% 55%/4px 4px no-repeat,
+ linear-gradient(#fff,#fff) 83% 28%/3px 3px no-repeat,linear-gradient(#fff,#fff) 92% 66%/3px 3px no-repeat}
+.rooftop::after{content:"";position:absolute;inset:0 0 45% 0;pointer-events:none;animation:twinkle 2.3s steps(2) infinite alternate-reverse;background:
+ linear-gradient(#ffe9a8,#ffe9a8) 12% 40%/3px 3px no-repeat,linear-gradient(#fff,#fff) 33% 70%/3px 3px no-repeat,
+ linear-gradient(#fff,#fff) 48% 12%/3px 3px no-repeat,linear-gradient(#ffe9a8,#ffe9a8) 66% 36%/3px 3px no-repeat,
+ linear-gradient(#fff,#fff) 78% 10%/3px 3px no-repeat,linear-gradient(#fff,#fff) 95% 38%/4px 4px no-repeat}
+.rooftop .wrap{position:relative;z-index:1}
+
 @media (prefers-reduced-motion:reduce){
-  .cloud,.marquee .row,.playing .eq i{animation:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
+  html.js :is(.plate,.floor h2,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.sound>*,.promises .panel,.tour .card,#get .wrap>*){opacity:1;translate:none}
+  html.js .hero h1 em{background-size:100% 100%;color:var(--gold)}
+  .street .car{display:none}
 }
