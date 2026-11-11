@@ -3,116 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Campaign Tower — build the agency, win the pitch</title>
-<meta name="description" content="Campaign Tower is a pixel-art idle game for iPhone. Stack floors, hire creatives, run the lift, win briefs from 60 fictional brands and climb the New Business League.">
-<meta property="og:title" content="Campaign Tower">
-<meta property="og:description" content="Make the work. Win the Lions. A pixel-art tower game about the ad business, for iPhone.">
-<meta property="og:image" content="img/tower.png">
+<title>Campaign Tower — stack the tower, run the agency</title>
+<meta name="description" content="Campaign Tower is a pixel-art idle game for iPhone. Stack a one-room startup into a global ad agency: hire creatives with opinions, drive the lift, and win briefs from sixty brands with no subtlety at all.">
+<link rel="canonical" href="https://njvb.github.io/campaigntower-site/">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://njvb.github.io/campaigntower-site/">
+<meta property="og:title" content="Campaign Tower">
+<meta property="og:description" content="Stack the tower. Run the agency. A pixel-art idle game about the ad business, for iPhone.">
+<meta property="og:image" content="https://njvb.github.io/campaigntower-site/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2A2733">
 <link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  // At launch, paste the App Store link here. Every download button uses it.
+  window.APP_STORE_URL = "";
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Campaign Tower","operatingSystem":"iOS 17 or later","applicationCategory":"GameApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A pixel-art idle game about stacking a one-room startup into a global ad agency."}
+</script>
 </head>
 <body>
 <header class="bar"><div class="wrap">
-  <img src="img/icon.png" alt=""><b>CAMPAIGN TOWER</b>
-  <nav><a href="#features">Features</a><a href="#compete">Compete</a><a href="#screens">Screens</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  <img src="img/icon.png" alt="" width="36" height="36"><b>CAMPAIGN TOWER</b>
+  <nav aria-label="Sections">
+    <a href="#loop">The game</a><a href="#staff">Staff</a><a href="#clients">Clients</a><a href="#league">League</a><a href="#music">Music</a>
+    <a class="btn js-store" href="#get">Download</a>
+  </nav>
 </div></header>
 
-<section class="hero">
+<main>
+<section class="hero" aria-labelledby="hero-title">
   <div class="cloud a"></div><div class="cloud b"></div><div class="cloud c"></div>
   <div class="wrap">
-    <div>
-      <div class="kicker" style="color:#1B1B24;opacity:.7">Pixel-art idle game · iPhone</div>
-      <img class="wordmark" src="img/wordmark.png" alt="Campaign Tower">
-      <h1>MAKE THE WORK.<br>WIN THE LIONS.</h1>
-      <p class="lead">Start in one room on the high street and stack your way to a global advertising network. Hire creatives, drive the lift, ship the work, win briefs from Crunchy Cola and Bytefruit Phones, then fight six rival agencies for the top of the New Business League.</p>
-      <div class="cta">
-        <a class="btn" href="#appstore">Download on the App Store</a>
-        <a class="btn ghost" href="#how">How it plays</a>
-      </div>
-      <p class="note">Free to play · optional Awards packs · no energy meter, no paywalled floors.</p>
+    <div class="hero-top">
+      <img class="wordmark px" src="img/wordmark.png" alt="Campaign Tower" width="664" height="328">
+      <h1 id="hero-title">You've played the tower games. <em>Now run the agency.</em></h1>
     </div>
-    <div class="phone"><img src="img/tower.png" alt="The tower: a lobby, studio apartments and department floors full of pixel creatives"></div>
+    <div class="phone-wrap">
+      <div class="phone">
+        <video src="media/lift.mp4" poster="media/lift-poster.jpg" autoplay muted loop playsinline preload="metadata" width="430" height="932" aria-label="Gameplay: a visitor rides the lift up the tower"></video>
+      </div>
+      <span class="tag">Press &amp; hold to ride</span>
+    </div>
+    <div class="hero-cta">
+      <p class="lead">Stack a one-room startup into a global ad network, one floor, one hire and one impossible brief at a time. Every floor is a department. Every creative has a dream role. Every client wants it yesterday.</p>
+      <div class="cta">
+        <a class="btn store js-store" href="#get"><small>Download on the</small><span>App Store</span></a>
+      </div>
+      <p class="note">Free · No energy meter · No paywalled floors</p>
+    </div>
   </div>
-  <div class="street"></div>
+  <div class="street" aria-hidden="true"></div>
 </section>
 
-<section id="features"><div class="wrap">
-  <div class="kicker">What you do</div>
-  <h2>A tower game about the ad business</h2>
-  <p>Every floor is a department. Every creative has a dream role. Every client wants it yesterday.</p>
-  <div class="grid">
-    <div class="panel" style="--accent:#F28C28"><div class="ic">🏗️</div><h3>Stack floors</h3><p>32 floor types across Creative, Strategy, Media, Production and Account. Each makes three tiers of work, from a Tagline to a Full Ad Suite, and it sells while you're away.</p></div>
-    <div class="panel" style="--accent:#C89B6A"><div class="ic">🧑‍🎨</div><h3>Hire creatives</h3><p>Every creative arrives with skills, a quirk and a dream role. Put them on the floor they always wanted and they work harder. Level them to 20, unlock perks, kit them out with gear.</p></div>
-    <div class="panel" style="--accent:#3FBF5F"><div class="ic">🛗</div><h3>Drive the lift</h3><p>Tap a visitor, then press and hold to ride them up. Land on their floor for a tip, land it neatly for a bonus. The rare Headhunter, Award Judge or Big Spender pays a lot more.</p></div>
-    <div class="panel" style="--accent:#F2C94C"><div class="ic">💼</div><h3>Win the brief</h3><p>Sixty fictional brands walk in with briefs. Choose between up to three clients, reserve the stock, check your odds, then deliver and sign them as a retained account.</p></div>
-    <div class="panel" style="--accent:#E04B4B"><div class="ic">📋</div><h3>Keep or resign</h3><p>Cash cows pay the rent and never win anything. Trophy accounts lose money and win awards. Startups double or vanish. The roster has a cap, so you decide who stays.</p></div>
-    <div class="panel" style="--accent:#8B5CF6"><div class="ic">✨</div><h3>Grow it taller</h3><p>Floor upgrades, a 12-perk Reputation tree, 30 pieces of gear, 36 achievements and daily missions. At 50 floors, go public: start again with permanent share bonuses and a senior creative in tow.</p></div>
+<section class="tour" aria-labelledby="tour-title">
+  <div class="wrap head">
+    <h2 id="tour-title">Take the tour</h2>
+    <div class="arrows"><button type="button" data-dir="-1" aria-label="Previous screenshots">‹</button><button type="button" data-dir="1" aria-label="Next screenshots">›</button></div>
   </div>
-</div></section>
+  <div class="track" tabindex="0" aria-label="Screenshots">
+    <figure class="card"><p>Every floor is another department.</p><img src="img/shots/01-tower.jpg" alt="The tower from the lobby up, every floor busy with pixel creatives" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>Deliver the brief. Sign the client.</p><img src="img/shots/02-campaign.jpg" alt="A campaign brief with the work to deliver, the odds and the prize" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>Climb the New Business League.</p><img src="img/shots/03-league.jpg" alt="The New Business League table, seven agencies in a three-day season" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>Hire three. Match the dream role.</p><img src="img/shots/04-floor.jpg" alt="A department floor and its team of three creatives" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>Run the work across town.</p><img src="img/shots/05-dash.jpg" alt="Deadline Dash: a creative running down the high street" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>A new event every week.</p><img src="img/shots/06-agency.jpg" alt="The agency hub with this week's event, perks, missions and mini-games" width="540" height="1170" loading="lazy"></figure>
+    <figure class="card"><p>32 floor types. Keep stacking.</p><img src="img/shots/07-top.jpg" alt="The top of the tower with the next floor ready to build" width="540" height="1170" loading="lazy"></figure>
+  </div>
+</section>
 
-<section id="compete" class="band"><div class="wrap">
-  <div class="kicker">Between floors</div>
-  <h2>Always something to chase</h2>
-  <p>The tower builds itself while you're gone. These are the reasons to come back.</p>
-  <div class="split">
-    <figure class="shot"><img src="img/league.png" alt="The New Business League table: seven agencies over a three-day season"><figcaption>New Business League</figcaption></figure>
-    <div class="list">
-      <div class="panel" style="--accent:#F2C94C"><h3>🏆 The New Business League</h3><p>From 10 floors, your agency joins a table of seven for a three-day season. Win briefs, claim missions and open floors to score; beat a rival in a pitch and they lose points too. Climb from Local to Regional, National and Global.</p></div>
-      <div class="panel" style="--accent:#3B82F6"><h3>📅 A new week, a new event</h3><p>Every Monday brings a themed week: Talent Week, Pitch Season, Open House, Training Week or Awards Season. Each tilts the odds your way, and the hub shows what's coming next.</p></div>
-      <div class="panel" style="--accent:#3FBF5F"><h3>🏃 Two daily mini-games</h3><p>Rush Hour is a 60-second lift frenzy. In Deadline Dash, your top creative runs the work across town, jumping benches, cones and hydrants as the street speeds up. Both keep your personal best.</p></div>
+<section class="floor" id="loop" aria-labelledby="loop-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">1F</span><span class="t">The game</span></div>
+    <h2 id="loop-title">Build it, staff it, bill it.</h2>
+    <p class="intro">Borrowed from the best tower games, re-themed for anyone who has sat through a status call.</p>
+    <div class="beats">
+      <article class="beat"><img class="px" src="img/build.jpg" alt="The top of the tower, with floor 11 ready to build" width="640" height="570" loading="lazy"><div><h3>Build</h3><p>Every floor is a department: Copywriting, Social, the Photo Studio, a Rooftop Bar. Each makes three tiers of work, from a Tagline to a Full Ad Suite, and sells it while you're away.</p></div></article>
+      <article class="beat"><img class="px" src="img/hire.jpg" alt="A department's team of three, each with skills and a dream role" width="640" height="616" loading="lazy"><div><h3>Hire</h3><p>Three creatives to a floor. Put them in the role they've always dreamed of and they work harder. Level them to 20 and kit them out with gear.</p></div></article>
+      <article class="beat"><img class="px" src="img/win.jpg" alt="A brief from Blockchain Bagels, with the units needed and the prize" width="640" height="684" loading="lazy"><div><h3>Win</h3><p>A client walks in with a brief. Deliver it from stock and they sign as an account, paying you by the hour. Then you decide who stays.</p></div></article>
+    </div>
+    <div class="facts">
+      <div><b>32</b><span>floor types</span></div>
+      <div><b>60</b><span>fictional brands</span></div>
+      <div><b>36</b><span>achievements</span></div>
+      <div><b>12</b><span>perks to unlock</span></div>
+      <div><b>0</b><span>energy meters</span></div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="screens"><div class="wrap">
-  <div class="kicker">Screens</div>
-  <h2>Every floor is a tiny scene</h2>
-  <p>A city skyline drifts behind the tower, rooms fill with furniture as you upgrade them, and the staff wander about minding their own business.</p>
-  <div class="shots">
-    <figure class="shot"><img src="img/top.png" alt="The top of the tower with a floor under construction" loading="lazy"><figcaption>Build floor 11</figcaption></figure>
-    <figure class="shot"><img src="img/floor.png" alt="A department floor: production and the team of three" loading="lazy"><figcaption>A department and its team</figcaption></figure>
-    <figure class="shot"><img src="img/campaign.png" alt="A campaign brief with deliverables and the prize" loading="lazy"><figcaption>Deliver the brief</figcaption></figure>
-    <figure class="shot"><img src="img/agency.png" alt="The agency hub with this week's event, perks, missions and mini-games" loading="lazy"><figcaption>The agency hub</figcaption></figure>
-    <figure class="shot"><img src="img/build.png" alt="The build sheet listing floor types by department" loading="lazy"><figcaption>32 floor types</figcaption></figure>
-    <figure class="shot"><img src="img/dash.png" alt="Deadline Dash: a creative running down the high street" loading="lazy"><figcaption>Deadline Dash</figcaption></figure>
+<section class="floor alt" id="staff" aria-labelledby="staff-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">2F</span><span class="t">The staff</span></div>
+    <h2 id="staff-title">Every creative comes with a quirk.</h2>
+    <p class="intro">Names, skills from 0 to 9, a dream role and one personality trait HR has given up on. Here are a few who applied this week.</p>
+    <div class="badges">
+      <article class="badge" style="--c:var(--red)"><div class="face" aria-hidden="true">MO</div><h3>Maya Okafor</h3><p class="role">Dreams of the Print Shop</p><p class="quirk">Has strong opinions about kerning.</p></article>
+      <article class="badge" style="--c:var(--blue)"><div class="face" aria-hidden="true">TS</div><h3>Theo Sato</h3><p class="role">Dreams of the Social Team</p><p class="quirk">Will pitch anything as a podcast.</p></article>
+      <article class="badge" style="--c:var(--green)"><div class="face" aria-hidden="true">PD</div><h3>Priya Delgado</h3><p class="role">Dreams of the Focus Group Room</p><p class="quirk">Keeps a sourdough starter under the desk.</p></article>
+      <article class="badge" style="--c:var(--gold)"><div class="face" aria-hidden="true">JM</div><h3>Jonah Moreau</h3><p class="role">Dreams of the Client Lounge</p><p class="quirk">Once sold a logo to a dog.</p></article>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section id="how" class="band"><div class="wrap">
-  <div class="kicker">How it plays</div>
-  <h2>The loop</h2>
-  <p>Borrowed from the best tower games, re-themed for anyone who has sat through a status call.</p>
-  <div class="steps">
-    <div>Build a floor and pick a department.</div>
-    <div>Creatives move into the studios. Hire the ones who dream of that floor.</div>
-    <div>Start a job: a Tagline, a Print Ad, a Client Dinner. The work sells on its own.</div>
-    <div>Tap the visitor in the lobby and hold to ride them to their floor for a tip.</div>
-    <div>A client walks in with a brief. Deliver from stock and sign them as an account.</div>
-    <div>Accounts bill by the hour, and every brief scores league points. Keep the cash cows, gamble on a trophy.</div>
-    <div>Spend Reputation on perks, upgrade floors, go public, and do it again, taller.</div>
+<section class="floor" id="clients" aria-labelledby="clients-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">3F</span><span class="t">The clients</span></div>
+    <h2 id="clients-title">Sixty brands, none of them subtle.</h2>
+    <p class="intro">Win the brief and the brand joins your roster. The roster has a cap, so like any good fantasy squad, somebody has to go.</p>
   </div>
-</div></section>
-
-<section id="sound"><div class="wrap">
-  <div class="grid">
-    <div class="panel" style="--accent:#F28C28"><div class="ic">🎵</div><h3>An original 8-bit soundtrack</h3><p>Six chiptune tracks made for the game: four for the tower, two for the mini-games. Every event has its own sound, and music steps aside when you're playing your own.</p></div>
-    <div class="panel" style="--accent:#3B82F6"><div class="ic">☁️</div><h3>Plays nice</h3><p>Offline earnings and iCloud sync, so the agency follows you between devices. Sessions are 30 seconds or 30 minutes; the agency keeps billing either way.</p></div>
-    <div class="panel" style="--accent:#3FBF5F"><div class="ic">♿</div><h3>Built for everyone</h3><p>Larger text, an assisted lift, a VoiceOver floors menu and reduced motion. Sound, music and haptics each have their own switch.</p></div>
+  <div class="marquee" aria-hidden="true">
+    <div class="row"><span>Crunchy Cola</span><span>Moo Milk</span><span>Bytefruit Phones</span><span>Quiet Cat Litter</span><span>Blockchain Bagels</span><span>Unicorn Oat Milk</span><span>Hoverpup Drones</span><span>Grandma's Gravy</span><span>Bark Bank</span><span>Thunder Burger</span><span>Wobble Jelly</span><span>Velour Yachts</span><span>Crunchy Cola</span><span>Moo Milk</span><span>Bytefruit Phones</span><span>Quiet Cat Litter</span><span>Blockchain Bagels</span><span>Unicorn Oat Milk</span><span>Hoverpup Drones</span><span>Grandma's Gravy</span><span>Bark Bank</span><span>Thunder Burger</span><span>Wobble Jelly</span><span>Velour Yachts</span></div>
+    <div class="row r2"><span>Nap Mattress</span><span>Ghostkitchen.io</span><span>Rocket Razors</span><span>Puddle Umbrellas</span><span>Walkies.app</span><span>Sudsy Dish Soap</span><span>Fizzle Energy</span><span>Piggy Trust Bank</span><span>Happy Hen Eggs</span><span>Maison Mirage</span><span>Zap Batteries</span><span>Aurum Champagne</span><span>Nap Mattress</span><span>Ghostkitchen.io</span><span>Rocket Razors</span><span>Puddle Umbrellas</span><span>Walkies.app</span><span>Sudsy Dish Soap</span><span>Fizzle Energy</span><span>Piggy Trust Bank</span><span>Happy Hen Eggs</span><span>Maison Mirage</span><span>Zap Batteries</span><span>Aurum Champagne</span></div>
   </div>
-</div></section>
+  <div class="wrap">
+    <div class="roster">
+      <div class="panel" style="--accent:var(--green)"><h3>Cash cow</h3><p>Pays beautifully. Will never, ever win an award.</p></div>
+      <div class="panel" style="--accent:var(--gold)"><h3>Trophy</h3><p>Loses money, wins awards, keeps the creatives happy.</p></div>
+      <div class="panel" style="--accent:var(--blue)"><h3>Bread &amp; butter</h3><p>Does exactly what it says on the tin.</p></div>
+      <div class="panel" style="--accent:var(--red)"><h3>Startup</h3><p>Could double next month. Could vanish next week.</p></div>
+    </div>
+  </div>
+</section>
 
-<section class="band" id="appstore"><div class="wrap" style="text-align:center">
-  <div class="kicker">Get it</div>
-  <h2>Campaign Tower for iPhone</h2>
-  <p>iOS 17 or later. Free, with optional Awards packs and an Agency Pass.</p>
-  <a class="btn gold" href="#">Download on the App Store</a>
-</div></section>
+<section class="floor alt" id="league" aria-labelledby="league-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">4F</span><span class="t">Between floors</span></div>
+    <h2 id="league-title">Always something to chase.</h2>
+    <p class="intro">The tower builds itself while you're gone. These are the reasons to come back.</p>
+    <div class="split">
+      <img class="shot px" src="img/league.jpg" alt="The New Business League: your agency top of a seven-agency table" width="640" height="844" loading="lazy">
+      <div class="stack">
+        <div class="panel" style="--accent:var(--gold)"><h3>The New Business League</h3><p>At 10 floors you join a table of seven agencies for a three-day season. Win briefs, claim missions and open floors to score. Beat a rival in a pitch and they lose points too. Climb from Local to Regional, National and Global.</p></div>
+        <div class="panel" style="--accent:var(--blue)"><h3>A new event every Monday</h3><p>Each week tilts the odds your way, and the hub tells you what's coming next.</p>
+          <div class="chips"><span>Talent Week</span><span>Pitch Season</span><span>Open House</span><span>Training Week</span><span>Awards Season</span></div></div>
+        <div class="panel" style="--accent:var(--green)"><h3>Rush Hour</h3><p>Once a day: sixty seconds, one lift, everybody at once. Your best round goes on the board.</p></div>
+      </div>
+    </div>
+    <div class="dash">
+      <video src="media/dash.mp4" poster="media/dash-poster.jpg" autoplay muted loop playsinline preload="none" width="640" height="570" aria-label="Deadline Dash: a creative runs down the high street, jumping obstacles"></video>
+      <div>
+        <h3 style="font-size:20px;color:var(--gold)">Deadline Dash</h3>
+        <p class="intro" style="margin-bottom:0">Your best creative grabs the work and runs it across town. Benches, cones, hydrants, a suspiciously placed bucket. The street speeds up the further you get, and your personal best is always watching.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="floor" id="music" aria-labelledby="music-title">
+  <div class="wrap sound">
+    <div>
+      <div class="plate"><span class="n">5F</span><span class="t">The soundtrack</span></div>
+      <h2 id="music-title">An original 8-bit soundtrack.</h2>
+      <p class="intro" style="margin-bottom:0">Six chiptune tracks written for the game: four for the tower, two for the mini-games. Every event has its own blip, from a tip landing to a pitch lost. Music steps aside the moment you put on your own.</p>
+    </div>
+    <div class="player" id="player">
+      <button class="play" type="button" aria-label="Play Lobby Hours">▶</button>
+      <div class="meta">
+        <b>Lobby Hours</b><small>From the tower · 24-second preview</small>
+        <div class="meter" aria-hidden="true"><i></i></div>
+        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <audio src="media/lobby-hours.m4a" preload="none"></audio>
+    </div>
+  </div>
+</section>
+
+<section class="floor alt" aria-labelledby="fair-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">6F</span><span class="t">House rules</span></div>
+    <h2 id="fair-title">Fair, free and friendly.</h2>
+    <p class="intro">Sessions are 30 seconds or 30 minutes. The agency keeps billing either way.</p>
+    <div class="promises">
+      <div class="panel" style="--accent:var(--gold)"><h3>Free to play</h3><p>Optional rewarded ads and three purchases: two Awards packs and the Agency Pass. No energy meter, no paywalled floors.</p></div>
+      <div class="panel" style="--accent:var(--blue)"><h3>Plays while you don't</h3><p>Offline earnings while you're away, and iCloud sync so the agency follows you between devices.</p></div>
+      <div class="panel" style="--accent:var(--green)"><h3>Built for everyone</h3><p>Larger text, an assisted lift, a VoiceOver floors menu and reduced motion. Sound, music and haptics each have their own switch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rooftop" id="get" aria-labelledby="get-title">
+  <div class="wrap">
+    <div class="plate"><span class="n">RF</span><span class="t">The rooftop</span></div>
+    <h2 id="get-title">The view from the top is excellent.</h2>
+    <p>Campaign Tower is free on iPhone. iOS 17 or later.</p>
+    <a class="btn store js-store" href="#get"><small>Download on the</small><span>App Store</span></a>
+  </div>
+  <div class="skyline" aria-hidden="true"></div>
+</section>
+</main>
 
 <footer><div class="wrap">
-  <span>© <span id="y"></span> Campaign Tower · Every brand, agency and creative is fictional.</span>
+  <span>© <span id="y"></span> Campaign Tower · Every brand, agency and creative is fictional. Any resemblance to your last job is a coincidence.</span>
   <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="mailto:njvanderbyl@gmail.com">Contact</a></nav>
 </div></footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+if (window.APP_STORE_URL) document.querySelectorAll('.js-store').forEach(a => { a.href = window.APP_STORE_URL; });
+
+// Screenshot carousel arrows
+const track = document.querySelector('.track');
+document.querySelectorAll('.arrows button').forEach(b => b.addEventListener('click', () => {
+  track.scrollBy({ left: Number(b.dataset.dir) * 272 * 2, behavior: 'smooth' });
+}));
+
+// Respect reduced motion: no autoplaying video
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+}
+
+// Soundtrack preview
+const player = document.getElementById('player');
+const audio = player.querySelector('audio');
+const btn = player.querySelector('.play');
+const bar = player.querySelector('.meter i');
+btn.addEventListener('click', () => { audio.paused ? audio.play() : audio.pause(); });
+audio.addEventListener('play', () => { player.classList.add('playing'); btn.textContent = '❚❚'; btn.setAttribute('aria-label', 'Pause Lobby Hours'); });
+audio.addEventListener('pause', () => { player.classList.remove('playing'); btn.textContent = '▶'; btn.setAttribute('aria-label', 'Play Lobby Hours'); });
+audio.addEventListener('ended', () => { bar.style.width = '0'; });
+audio.addEventListener('timeupdate', () => { bar.style.width = (audio.currentTime / (audio.duration || 24) * 100) + '%'; });
+</script>
 </body>
 </html>
