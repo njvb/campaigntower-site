@@ -41,7 +41,7 @@
   <img src="img/icon.png" alt="" width="36" height="36"><b>CAMPAIGN TOWER</b>
   <nav aria-label="Sections">
     <a href="#loop">The game</a><a href="#staff">Staff</a><a href="#clients">Clients</a><a href="#league">League</a>
-    <a class="btn js-store" href="#get">Download</a>
+    <a class="btn js-store" href="#get">Get it<span class="wide"> on iPhone</span></a>
   </nav>
 </div></header>
 
@@ -70,9 +70,9 @@
     <div class="hero-cta">
       <p class="lead">Build new floors, hire creatives who all think they're the next big thing, and drive the lift yourself because nobody budgeted for a lift operator. Clients walk in with briefs. You hand over the work. Mostly on time.</p>
       <div class="cta">
-        <a class="btn store js-store" href="#get"><small>Download on the</small><span>App Store</span></a>
+        <a class="store-badge js-store" href="#get"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
       </div>
-      <p class="note">Free · No energy meter · Nothing behind a paywall</p>
+      <p class="note">Free on iPhone · No energy meter · Nothing behind a paywall</p>
     </div>
   </div>
   <div class="street" aria-hidden="true"><div class="layer walk back"></div><div class="layer walk front"></div></div>
@@ -189,7 +189,7 @@
   <div class="wrap">
     <h2 id="get-title">Free on iPhone</h2>
     <p>Download it, build your first floor, and hire someone who keeps a sourdough starter under their desk. Works on iOS 17 or later.</p>
-    <a class="btn store js-store" href="#get"><small>Download on the</small><span>App Store</span></a>
+    <a class="store-badge js-store" href="#get"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
   </div>
   <div class="skyline" aria-hidden="true"></div>
 </section>
@@ -218,7 +218,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Reveal things as they scroll in, staggered within each group
-const revealEls = [...document.querySelectorAll('.plate,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.promises .panel,.tour .card,#get .wrap>*')];
+const revealEls = [...document.querySelectorAll('.plate,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.promises .panel,.tour .card,#get .wrap>:not(.store-badge)')];
 const counts = new Map();
 revealEls.forEach(el => {
   const i = counts.get(el.parentElement) || 0;
