@@ -9,7 +9,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:var(--sans);background:var(--ink);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--gold)}
-img,video{max-width:100%;display:block}
+img,video{max-width:100%;height:auto;display:block}
 .px{image-rendering:pixelated;image-rendering:crisp-edges}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
