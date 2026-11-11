@@ -21,8 +21,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="motion.js" defer></script>
 <script>
   document.documentElement.classList.add('js');
+  // Full motion unless the visitor asked for less; motion.js clears it if it never loads.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion');
+    setTimeout(() => { if (!window.__motion) document.documentElement.classList.remove('motion'); }, 3000);
+  }
   // At launch, paste the App Store link here. Every download button uses it.
   window.APP_STORE_URL = "";
 </script>
@@ -212,30 +218,17 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Reveal things as they scroll in, staggered within each group
-const revealEls = [...document.querySelectorAll('.plate,.floor h2,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.promises .panel,.tour .card,#get .wrap>*')];
+const revealEls = [...document.querySelectorAll('.plate,.floor .intro,.beat,.facts,.badge,.roster .panel,.split>*,.stack>.panel,.dash>*,.promises .panel,.tour .card,#get .wrap>*')];
 const counts = new Map();
 revealEls.forEach(el => {
   const i = counts.get(el.parentElement) || 0;
   counts.set(el.parentElement, i + 1);
   el.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
 });
-const countUp = box => box.querySelectorAll('b').forEach(b => {
-  const n = Number(b.textContent);
-  if (!n || calm) return;
-  const t0 = performance.now();
-  const tick = t => {
-    const k = Math.min(1, (t - t0) / 1200);
-    b.textContent = Math.round(n * (1 - Math.pow(1 - k, 3)));
-    if (k < 1) requestAnimationFrame(tick);
-  };
-  b.textContent = '0';
-  requestAnimationFrame(tick);
-});
 if ('IntersectionObserver' in window && !calm) {
   const io = new IntersectionObserver(entries => entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in');
-    if (e.target.classList.contains('facts')) countUp(e.target);
     io.unobserve(e.target);
   }), { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
